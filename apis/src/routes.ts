@@ -1,6 +1,6 @@
 import { Express, Request, Response } from "express";
 import validate from "./middleware/validateResource";
-import { createUserHandler } from "./controllers/user.controller";
+import { createUserHandler, updateUserHandler } from "./controllers/user.controller";
 import { createUserSchema } from "./schema/user.schema";
 import { createSessionHandler, deleteSessionHandler, getUserSessionsHandler } from "./controllers/session.controller";
 import { SessionSchema } from "./schema/session.schema";
@@ -33,6 +33,10 @@ export default class Routes implements RoutesInterface{
            createUserHandler
         )
     }
+
+    public updateUser(){
+        return this.app.put('/api/users', requireUser, updateUserHandler)
+    }
     public createSession(){
         return this.app.post('/api/sessions', validate(SessionSchema), createSessionHandler)
     }
@@ -40,7 +44,7 @@ export default class Routes implements RoutesInterface{
     public getSession(){
         return this.app.get('/api/sessions',requireUser, getUserSessionsHandler)
     }
-    
+
     public deleteSession(){
         return this.app.delete('/api/sessions',requireUser, deleteSessionHandler)
     }

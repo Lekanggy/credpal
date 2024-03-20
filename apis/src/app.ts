@@ -19,6 +19,7 @@ routes.healthCheck();
 routes.createSession();
 routes.getSession();
 routes.deleteSession();
+routes.updateUser()
 
 //Start server
 app.listen(port, async()=>{
