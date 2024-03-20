@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Column, Row } from '../globalStyle'
 import Img from '../assets/c5.png'
 import styled from 'styled-components'
